@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<form method="post" action="/Reservation/Add" class="container my-5 bg-light p-4 rounded shadow-sm">
+    <h2 class="mb-4 text-center text-primary">Add Reservation</h2>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" id="Name" name="Name" class="form-control" placeholder="Name" required />
+    </div>
+    <div class="mb-3">
+        <label for="SurName" class="form-label">Surname</label>
+        <input type="text" id="SurName" name="SurName" class="form-control" placeholder="Surname" required />
+    </div>
+    <div class="mb-3">
+        <label for="Gender" class="form-label">Gender</label>
+        <select id="Gender" name="Gender" class="form-select" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="TCKN" class="form-label">TCKN</label>
+        <input type="text" id="TCKN" name="TCKN" class="form-control" placeholder="TCKN" required />
+    </div>
+    <div class="mb-3">
+        <label for="DateOfBirth" class="form-label">Date of Birth</label>
+        <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="CheckInDate" class="form-label">Check-In Date</label>
+        <input type="date" id="CheckInDate" name="CheckInDate" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="CheckOutDate" class="form-label">Check-Out Date</label>
+        <input type="date" id="CheckOutDate" name="CheckOutDate" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100">Add Reservation</button>
+    </div>
+</form>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\N_Katmanlı_Mimari.props" />
+</Project>

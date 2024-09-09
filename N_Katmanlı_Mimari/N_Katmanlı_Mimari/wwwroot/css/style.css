@@ -1,0 +1,126 @@
+body {
+    background-color: #f7f9fc;
+    font-family: 'Roboto', sans-serif;
+    color: #4a4a4a; /* Ana yazý rengi olarak koyu gri */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Listeyi yatayda ortalar */
+    margin-top: 0; /* Üst boþluðu sýfýrlar */
+    padding-top: 0; /* Üst padding'i sýfýrlar */
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    color: #ffffff; /* Buton metni için beyaz */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.btn-danger {
+    border-radius: 50px;
+    color: #ffffff; /* Sil butonunun metin rengi beyaz */
+}
+
+table {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: center;
+    padding: 15px;
+}
+
+th {
+    background-color: #007bff;
+    color: #5a189a; /* Tablo baþlýklarý için beyaz */
+}
+
+td {
+    color: #4a4a4a; /* Tablo hücreleri için koyu gri */
+}
+
+.modal-content {
+    border-radius: 15px;
+    color: #4a4a4a; /* Modal içerik rengi */
+}
+
+.modal-header, .modal-footer {
+    border: none;
+    color: #007bff; /* Modal baþlýk ve footer metin rengi */
+}
+
+.form-group input {
+    border-radius: 10px;
+    padding: 10px;
+    color: #4a4a4a; /* Form giriþleri için yazý rengi */
+}
+
+.form-group label {
+    color: #007bff; /* Form etiketleri için mavi */
+}
+
+/* Layout */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #6c63ff; /* Açýk mor tonlarý */
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+    .navbar-nav .nav-link.active {
+        color: #f8f9fa;
+    }
+
+.hero-section {
+    background-color: #6c63ff; /* Açýk mor tonlarý */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+    .hero-section .btn {
+        background-color: #fff;
+        color: #6c63ff;
+    }
+
+.footer {
+    background-color: #6c63ff; /* Açýk mor tonlarý */
+    color: #fff;
+    padding: 20px 0;
+    margin-top: auto; /* Footer'ý sayfanýn altýna yapýþtýrýr */
+}
+
+    .footer p {
+        margin: 0;
+    }

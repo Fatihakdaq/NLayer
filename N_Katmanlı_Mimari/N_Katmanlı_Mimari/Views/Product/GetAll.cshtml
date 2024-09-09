@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+        <div class="p-5 w-50 m-auto d-flex justify-content-between">
+            <!-- Pop-up için artı ikonu -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <i class="fas fa-plus"></i> Add Product
+            </button>
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Category Id</th>
+                <th>Ad</th>
+                <th>Birim Fiyatı</th>
+                <th>Stok</th>
+                <th>Delete</th>
+            <th>Update</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.UnitPrice</td>
+                    <td>@item.UnitsInStock</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" onclick="setDeleteProductId(@item.ProductId)">Delete</button>
+                    </td>
+                    <td>
+                        <form asp-action="Edit" method="get">
+                            <input type="hidden" name="Id" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Ürün Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/Product/Add">
+                        <div class="mb-3">
+                            <label>Category Id</label>
+                            <div class="form-group">
+                                <input type="number" name="CategoryId" class="form-control" placeholder="Category ID" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Product Name</label>
+                            <div class="form-group">
+                                <input type="text" name="ProductName" class="form-control" placeholder="Product Name" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Unit Price</label>
+                            <div class="form-group">
+                                <input type="number" name="UnitPrice" class="form-control" placeholder="Unit Price" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Unit Stock</label>
+                            <div class="form-group">
+                                <input type="number" name="UnitsInStock" class="form-control" placeholder="Unit Stock" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Silme İşlemi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bu ürünü silmek istediğinizden emin misiniz?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="deleteProduct()">Sil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+    let productIdToDelete;
+
+    function setDeleteProductId(productId) {
+        productIdToDelete = productId;
+    }
+
+    function deleteProduct() {
+        fetch(`/Product/Delete?id=${productIdToDelete}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    console.error("There was an error with the delete request.");
+                }
+            })
+            .catch(error => {
+                console.error("There was an error with the delete request:", error);
+            });
+    }
+  </script>
